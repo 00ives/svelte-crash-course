@@ -1,64 +1,25 @@
 <script>
-	let firstName = "Ives";
-	let lastName = "MCgives";
-	let color = "blue"
-	let showText = false
-	let users = [
-		{
-			id:1,
-			name: 'bill'
-		},
-		{
-			id:2,
-			name: 'john'
-		},
-		{
-			id:3,
-			name: 'gracy'
-		},
-	]
+	import FeedbackList from "./components/FeedbackList.svelte";
 
-
-	$: name = firstName + " " + lastName
-	const toggle = ()=>{
-		color = color ==="blue" ? 'red': "blue"
-		showText = !showText
-		users = [...users, {id: users.length + 1, name: 'new username' }]
-	}
+		let feedback = [
+			{
+				id: 1,
+				rating: 9,
+				text: 'Vivamus posuere lorem tempor, lacinia nibh ut, consectetur felis. In congue mauris quam, a suscipit orci pharetra eget. Phasellus in ipsum a eros feugiat auctor at vel purus.' 
+			},
+			{
+				id: 2,
+				rating: 5,
+				text: 'Vivamus posuere lorem tempor, lacinia nibh ut, consectetur felis. In congue mauris quam, a suscipit orci pharetra eget. Phasellus in ipsum a eros feugiat auctor at vel purus.' 
+			},
+			{
+				id: 3,
+				rating: 7,
+				text: 'Vivamus posuere lorem tempor, lacinia nibh ut, consectetur felis. In congue mauris quam, a suscipit orci pharetra eget. Phasellus in ipsum a eros feugiat auctor at vel purus.' 
+			},
+		]
 </script>
 
 <main>
-	<h1 style="color: {color}">Hello {name}!</h1>
-	{#if showText}
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-	{:else}
-		<p>no text</p>
-	{/if}
-
-	<button style="height: 50px" on:click={toggle}>click</button>
-	{#each users as user (user.id)}
-		<h3>{user.id}: {user.name}</h3>
-	{/each}
+	<FeedbackList {feedback} />
 </main>
-
-<style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
-</style>
