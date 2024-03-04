@@ -18,8 +18,13 @@
 				text: 'Vivamus posuere lorem tempor, lacinia nibh ut, consectetur felis. In congue mauris quam, a suscipit orci pharetra eget. Phasellus in ipsum a eros feugiat auctor at vel purus.' 
 			},
 		]
+
+		const deleteFeedback = (e)=>{
+			const itemId =e.detail
+			feedback = feedback.filter((item)=>item.id != itemId)
+		}
 </script>
 
-<main>
-	<FeedbackList {feedback} />
+<main class="container">
+	<FeedbackList {feedback} on:delete-feedback={deleteFeedback} />
 </main>
